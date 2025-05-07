@@ -37,7 +37,7 @@ Given a set of cities and their coordinates, the Travelling Salesman Problem aim
 
 ## 📌 Usage
 
-Make sure `greek_cities_dataset.txt` is in the same directory or update the code with the correct path.
+Make sure `greek_cities_dataset.csv` is in the same directory or update the code with the correct path.
 
 ### 📝 Example Interaction
 

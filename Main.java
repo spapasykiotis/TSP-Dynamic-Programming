@@ -18,9 +18,9 @@ public class Main {
             }
         }
         
-        // Load dataset
+        // Load dataset from CSV
         List<Point> allPoints = new ArrayList<>();
-        File file = new File("greek_cities_dataset.txt");
+        File file = new File("greek_cities_dataset.csv"); // Assuming CSV file
         if (!file.exists() || !file.canRead()) {
             System.out.println("Failed to load dataset. File does not exist or cannot be read.");
             return;
@@ -29,8 +29,12 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.trim().split("\\s+");
-                if (parts.length != 3) continue;
+                // Skip header if exists
+                if (line.startsWith("City")) continue;  // Example: "City,Latitude,Longitude"
+
+                String[] parts = line.trim().split(",");
+                if (parts.length != 3) continue; // We expect 3 columns (Name, Latitude, Longitude)
+
                 String name = parts[0];
                 double lat = Double.parseDouble(parts[1]);
                 double lon = Double.parseDouble(parts[2]);
